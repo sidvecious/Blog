@@ -1,0 +1,29 @@
+- setup environment for development (environment variables, live-reload)
+- build basic homepage
+- css / bring reset.css, bootstrap.css
+- js / bring jquery.js
+- npm
+- inserisci la rotta '/dog.jpg' e invia al client il contenuto del file 'assets/img/dog.jpg'
+naturalmente controllando che il file sia se non presente devi far vedere la pagina 404
+
+
+- Create github repository
+
+---
+study: Model-View-Controller design pattern
+study: express.js (nodejs http webframework)
+study: ejs (rendering html templates)
+
+```
+tipo 
+<ul>
+  <% users.forEach(function(user){ %>            //control flow
+    <%- include('user/show', {user: user}); %>   // unescaped output
+  <% }); %>										 //control flow
+</ul>
+```
+
+package utili:  coockie-parser
+				debug
+				morgan
+				http-errors

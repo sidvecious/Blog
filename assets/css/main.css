@@ -1,0 +1,139 @@
+/* header*/
+
+
+
+.first-row {
+	display: grid;
+	grid-template-columns: 1fr 3fr 1fr;
+}
+.head-left {
+	text-align: right;
+	color: #cbc186;
+	padding: 10px 15px 10px 15px;
+	border-radius: 10px;
+}
+.head-center {
+	text-align: center;
+	padding-top: 20px;
+}
+.large {
+	text-transform: uppercase;
+	color: green;
+	font-size: 30px;
+	font-weight: 600;
+	}
+
+.head-right {
+	text-align: right;
+	background-color: green;
+	color: #cbc186;
+	padding: 10px 15px 10px 15px;
+	border-radius: 10px;
+}
+.sing-up {
+	text-align: top;
+	font-family:  Verdena;
+}    
+.sign-in {
+	text-align: bottom;
+	font-family:  Verdena;
+	padding: 2px 5px 2px 5px;
+	border: groove;
+	border-radius: 8px;
+} 
+
+.form-sign-in {
+	padding-top: 25px;
+}
+
+/*main*/
+.dummy-link {
+	display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    margin: 40px 0px 0px 30px;
+	text-align: center;
+	border: groove;
+	border-radius: 8px;
+	padding: 3px 5px 3px 5px;
+}
+
+.points {
+	padding-left: 10px;
+	line-height: 25px;
+	font-weight: 700;
+}
+
+.main-title {
+	padding-left: 50px;
+	line-height: 1.5;
+	letter-spacing: 2px;
+	grid-column: 1 / 6;
+	grid-row: 1;
+}
+
+.intro-media {
+	line-height:80px;
+	border: groove;
+	border-radius: 8px;
+	padding: 30px 30px 30px 30px;
+	grid-column: 4 / 6;
+	grid-row: 2 / 4;
+}
+
+.introduction {
+	grid-column: 1 / 4;
+	grid-row: 2;
+}
+
+.different {
+	grid-column: 1 / 4;
+	grid-row: 3;
+}
+
+
+.randomtext {
+	grid-column: 1 / 6;
+	grid-row: 4;
+}
+.main p {
+	color: #525350;
+}
+
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  color: green;
+}
+
+a { 
+     color: #525350; 
+     background-color: transparent;
+ }
+
+header {
+  margin: 35px 40px 30px 20px; 
+}
+
+body {
+  background-color: #cbc186;
+  margin: 400;
+}
+
+main {
+  margin-left: 80px;
+  margin-right: 80px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+  grid-gap: 20px;
+}
+
+footer {
+ 	border: groove;
+	border-radius: 8px;
+ 	margin-top: 50px;
+ 	font-family: Arial;
+ 	background-color: #525350;
+ 	text-align: center;
+
+ }

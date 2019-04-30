@@ -1,0 +1,16 @@
+
+
+GET
+/ -> home (login)
+
+GET/POST
+/login
+
+GET
+/logout
+
+GET/POST
+/signup
+
+
+

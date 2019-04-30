@@ -1,0 +1,26 @@
+<form action="/signup" method="POST" class=form-sign-up>
+	<label for="username">Username:</label>
+	<br>
+	<input id="username" name="username" 
+		type="text" required minlength="3" maxlength="15"
+		value="<%= locals.auth ? auth.username : '' %>">
+	<br>
+	<label for="pw">Password:</label>
+	<br>
+	<input id="pw" name="password" type="password" 
+		required minlength="8" maxlength="15"
+		value="<%= locals.auth ? auth.password : '' %>"
+		>
+	<br>
+	<label for="age">Age:</label>
+	<br>
+	<input id="age" name="age" type="number"
+		required minlength="2" maxlength="3"
+		value="<%= locals.auth ? auth.age : '' %>">
+	<br>
+	<input type="submit" value="Submit">
+</form>
+
+<% if (locals.error) { %>
+<p style="color:red"><%= error %></p>
+<% } %>

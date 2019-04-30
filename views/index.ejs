@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>	
+	<title>Blog</title>
+	<link rel="stylesheet" type="text/css" href="/assets/css/normalize.css">
+	
+	<link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+	<style>
+   		.my-class { color: cyan; }
+   		.header-hack { color: #cbc186; font-family: Arial}
+   		#my-id { font-size: 0.5em; }
+    </style>
+</head>
+<body>	
+	<header>
+		<div id="top">
+			<div class="first-row">
+				<div class="head-left">
+				</div>
+				<div class="head-center">
+					<a class="large" >Things of Interest</a>
+				</div>   
+				<div class="head-right">
+					<% if (locals.user) { %>
+						<h1>log out <%= user.username %></h1>
+					<% } else { %>
+						<a href="http://127.0.0.1:8080/signup" class="sign-up">Sign Up</a>
+						<form action="/signup" method="GET" class=form-sign-up>
+						</form>	
+						<a class="text-search" href="#"></a>
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24" focusable="false"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>	
+						<a href="http://127.0.0.1:8080/login" class="sign-in">Sign in</a>
+						<form action="/login" method="GET" class=form-sign-in>
+						<!--<label for="username">Username:</label>
+						<br>
+						<input id="username" name="username" type="text" required minlength="3" maxlength="15">
+						<br>
+						<label for="pw">Password:</label>
+						<br>
+						<input id="pw" name="pw" type="password" required minlength="8" maxlength="15">
+						<br>
+						<input type="submit" value="Submit">-->
+						</form>
+					<% } %>
+				</div>	
+			</div>
+		</div>    
+		<div class="dummy-link"> 
+			<a href="#">dummy link0  </a>
+			<a href="#">dummy link1  </a>
+			<a href="#">dummy link2  </a>
+			<a href="#">dummy link3  </a>
+			<a href="#">dummy link4  </a>
+			<a href="#">dummy link5  </a>
+			<a href="#">dummy link6  </a>
+			<a href="#">dummy link7  </a>
+		</div>  
+		<nav class="points">	
+			<ul>
+				<li><a href="#introduction">Introduction</a></li>
+				<li><a href="#different">And now something complete different</a></li>
+				<li><a href="#randomtext">randomtext</a></li>
+			</ul>
+		</nav>  
+	</header>
+	<main>	
+		<div class="main-title">
+			<% if (locals.user) { %>
+				<h1>Training blog of <%= user.username %></h1>
+			<% } else { %>
+		  	<h1>Training blog</h1>
+		  <% } %>
+			
+		</div> 
+		<div class="intro-media">  
+			<img src="/assets/img/dog.jpg" width="300px" alt="A significant image!">
+			<video src="https://upload.wikimedia.org/wikipedia/commons/transcoded/2/2e/Badger_collecting_bedding_material.webm/Badger_collecting_bedding_material.webm.480p.vp9.webm" width="300px" controls>Video not supported</video>
+			<div class="upload">
+			<form action = "http://127.0.0.1:8081/file_upload" method ="points" 
+         enctype = "multipart/form-data">
+        <input type="file" name="file" size="50" />
+        <br />
+        <input type = "submit" value = "Upload File" />
+      </form>
+    </div> 
+		</div>
+		<div id= "introduction" class="introduction">
+			<div class="intro-title">
+				<h2>First Post</h2>
+			</div>
+			<div class="intro-text">  
+				<p>testo segnaposto utilizzato nel settore della tipografia e della stampa. <span class="my-class">Lorem Ipsum</span> è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una <span id="my-id">cassetta</span> di caratteri e li assemblò per preparare un testo campione. È sopravvissuto non sol o a più di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem Ipsum.</p>
+			</div>  
+		</div>
+		<div id="different" class="different">
+			<div class="diff-title">
+				<h2>And now something complete different</h2>
+			</div>
+			<div class="diff-points">  
+				<ol>
+					<li>Punkt1</li>
+					<li>Punkt2</li>
+					<li>Punkt3</li>
+				</ol>
+			<div/>
+			<div class=" diff-text">  	
+				<p>Silent sir say desire fat him letter. Whatever settling goodness too and honoured she building answered her. Strongly thoughts remember mr to do consider debating. Spirits musical behaved on we he farther letters. Repulsive he he as deficient newspaper dashwoods we. Discovered her his pianoforte insipidity entreaties. Began he at terms meant as fancy. <strong>Breakfast</strong> arranging he if furniture we described on. Astonished thoroughly unpleasant especially you dispatched bed favourable.</p>
+			</div>  
+		</div>
+		<div id="randomtext" class="randomtext">
+			<div class="rnd-title">
+				<h2>Random text</h2>
+			</div>
+			<div class="rnd-text">  
+				<p>Yourself required no at thoughts delicate landlord it be. Branched dashwood do is whatever it. Farther be chapter at visited married in it pressed.
+				<br>
+				By distrusts procuring be oh frankness existence believing instantly if. Doubtful on an juvenile as of servants insisted. Judge why maids led sir whose guest drift her point. Him comparison especially friendship was who sufficient attachment favourable how. Luckily but minutes ask picture man perhaps are inhabit. How her good all sang more why.
+				</p>
+			</div>
+		</div>	  
+	<footer class="blog-footer">
+		<p><span class="header-hack">the footer is still in working progress</span></p>
+			<a href="#top"><span class="header-hack">Back to the top</span></a>
+		</p>
+	</footer>
+	<script src="/assets/js/main.js"></script>
+	<script>
+		console.log("inline js");
+	</script>
+	</main>	
+</body>
+</html>
