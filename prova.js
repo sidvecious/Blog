@@ -3,7 +3,7 @@
 
 const users = require('./database_di_prova.js');
 
-databased.users();
+console.log(users.databased());
 
 //users.push( {id: users.length+1, username: "tizio", password:"caio", age:36});
 console.log(users);

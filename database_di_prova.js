@@ -14,9 +14,9 @@ var users = [
 	}
 	];
 
-/*module.exports = {
+module.exports = {
 	databased: function() {
 		return "ma perche non funzioni, dio cane?";
 	}
-};*/
+};
 console.log(users[0]['username'])
