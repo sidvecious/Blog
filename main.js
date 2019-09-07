@@ -14,66 +14,72 @@ const viewspath = path.join(__dirname, 'views');
 const bcrypt = require('bcrypt');
 const saltRound = 12;
 
+const database = require("./database.js")
+
 // app path configuration (assets/views)
 app.set('view engine', 'ejs');
 app.set('views', viewspath);
 app.use('/assets', express.static(assetspath));
-app.use(cookieParser());
+app.use(cookieParser('truesecret')); //work in progress
+
+var users = database["data"]
 
 var bodyParser= require('body-parser');
 // form-urlencoded
 var urlencodedParser = bodyParser.urlencoded({ extended:false })
 
 
-var users = [
-	{
-		id: 0,
-		username: "tizio",
-		password: "scamorza",
-		age: 28
-	},
-	{
-		id: 1,
-		username: "caio",
-		password: "provolone",
-		age: 32
-	},
-	{	id: 2,
-		username: "sempronio",
-		password: "$2b$12$zF3ZRVTGijb39r/apWk5dOz9o31zJ1c.JGWBd1wVybjA075dg.KxO",
-		// password non hashata: taleggio
-		age: 12
+const login_user = (req, res, next) => {
+	console.log("middleware: login_user");
+
+	if (typeof req.signedCookies !== 'undefined'){
+		const cookies = req.signedCookies;
+
+		const current_user = cookies.current_user;
+
+		if (typeof current_user !== 'undefined'){
+			let user_id = +current_user;
+			if (!isNaN(user_id)){
+				req.user = users[user_id];
+			}
+		}
 	}
 
-];
+	next();
+};
 
 
 // live-reload in development mode
-if (isDev) {
+/*if (isDev) {
 	const reloader = require('easy-livereload');
 	const config = { watchDirs: [__dirname], checkFunc: () => true };
 	app.use(reloader(config));
-}
+}*/
+
+
+app.use(login_user);
 
 // home path  
 app.get('/', function (req, res) {
 	let context = {};
 
-	if (typeof req.cookies.current_user !== 'undefined'){
-		let user_id = +req.cookies.current_user;
-		if (!isNaN(user_id)){
-			context.user = users[user_id];
-		}
+	if (typeof req.user !== 'undefined'){ //collega id a req.user
+		context.user = req.user;
 	}
 
   	res.render('index', context);
 });
 
-app.get('/hello', function(req, res){
-	console.log("QUERY", req.query);
+app.get('/debug', function(req, res){
 	// res.cookie("A", "B");
-	res.contentType("text/plain");
-	res.send("hello world");
+	let response;
+
+	if (typeof req.user !== 'undefined'){
+		response = {status: 200, response: req.user};
+	} else {
+		response = {status: 404, error: "user not found"};
+	}
+	res.json(response);
 });
 
 app.get('/login', function (req, res) {
@@ -90,10 +96,9 @@ app.post('/login', urlencodedParser, function(req, res){
 	};
 
 	let username = context.auth.username;
-	let password = context.auth.username;
+	let password = context.auth.password;
 
 	console.log("POST /login", context);
-	 // e necessario?
 
 	if (username === null || 
 		username.length < 4 || 
@@ -106,10 +111,37 @@ app.post('/login', urlencodedParser, function(req, res){
 		password.length > 15) {
 		context.error = "invalid password";
 	};
-	// check typeof username != undefined && username.length > 8
+	
+	let currUser = null;
 	for (let i = 0; i < users.length; i++){
-		let currUser = users[i];
-		/*bcrypt.compare(context.auth.password, currUser.password, function (err, result) {
+		if (users[i].username === context.auth.username) {
+			currUser = users[i];
+			break;
+		}
+	}
+
+	if (currUser !== null) {
+		bcrypt.compare(context.auth.password, currUser.password, function (err, result) {
+			if (result == true &&
+				currUser.username == context.auth.username) {
+				let options = { maxAge: 1000* 60 * 15, //15 minutes
+					httpOnly: true,
+					signed: true
+				}
+				res.cookie("current_user", currUser.id, options); 
+				res.redirect('/');
+				return;
+			} else {	
+				context.error = "incorrect password or username";
+				res.render('login', context);
+			}
+		});
+	} else {
+		context.error = 'unknown username or password';
+		res.render('login', context);
+	}
+	/*
+	bcrypt.compare(context.auth.password, currUser.password, function (err, result) {
 			if (result == true &&
 				currUser.username == context.auth.username) {
 				res.cookie("current_user", i);
@@ -119,22 +151,20 @@ app.post('/login', urlencodedParser, function(req, res){
 				context.error = "incorrect password or username";
 			}
 		});*/
+		/*
 
 		if (currUser.username == context.auth.username && 
 			currUser.password == context.auth.password) { 	
 			res.cookie("current_user", i);
 			res.redirect('/');
 			return;	
-		} else
+		} else {
 			context.error = "unknow username or password"
-		
+		}*/
+	
 
-	}
-	//});
-	//context.error = "invalid username or password"
-
-	res.render('login', context);
-});
+	// res.render('login', context);
+}); 
 
 app.get('/signup', function(req, res){
 	console.log("GET /signup")
@@ -154,63 +184,42 @@ app.post('/signup', urlencodedParser, function(req, res){
 		age: +req.body.age
 	}
 
-	context.error = "";/* context error non mi funziona*/
-
 	let username = context.auth.username;
-	let password = context.auth.username;
+	let password = context.auth.password;
 	let age = context.auth.age;
 
-	/*if (context.auth.age.length < 2 || context.auth.age.length > 3) {
-		return res.status(400).send('Invalid age!');
-	}
-	
-	for (let i = 0; i < users.length; i++){
-		let currUser = users[i];
-		if (currUser.username == context.auth.username)
-			return res.status(409).send('This user is already exist');
-		//if (currUser.age.length < 2 || currUser.age.length > 3) 
-		//	return res.status(400).send('Invalid age!');
-		}*/
 	if (username === null || 
 		username.length < 4 || 
 		username.length > 10 || 
 		!(/^[a-zA-Z][a-zA-Z0-9]*$/.test(username)) ||
-		false /* se inizio con un numero entra in loop infinito*/) {
+		false ) {
 		//context.error = "invalid username";
 		return res.status(409).send("invalid username")
 	} else if (password === null ||
-		password.length < 8 ||  //fa errore se username e <8
+		password.length < 8 ||  
 		password.length > 15) {
 		//context.error = "invalid password";
 		return res.status(409).send("invalid password")
-	} else if (isNaN(age) || 
+	} else if (isNaN(age) || //questo proprio non va!
 		age.length > 3) {
-		//context.error = "invalid age"	
+		//context.error = "invalid age";	
 		return res.status(409).send("invalid age")
 	} else {
 		for (let i = 0; i < users.length; i++){
 		let currUser = users[i];
-			if (currUser.username == context.auth.username)
-			return res.status(409).send('This user is already exist');
+			if (currUser.username == context.auth.username ) {
+				return res.status(409).send('This user is already exist');
+			};	
 		};
 	};	
-	res.cookie("logged", "server-signed-key");
-
 	bcrypt.hash(context.auth.password, saltRound, function(err, hash) {
 	users.push( {id: users.length, 
 				username: context.auth.username, 
 				password: hash, 
 				age: context.auth.age});
+			//res.cookie("current_user", users.length-1)
+			res.redirect('/')
 	});
-	res.cookie("current_user", users.length-1)//sotto bcrypt non mi legge users.length bene
-	res.redirect('/')
-	console.log("POST /signup", context); //perche funziona senza queste righe?
-	res.render('signup', context);
-	
-	// all cool
-	// register user
-	// set cookie LOGIN
-	// redirect
 	return;
 });
 

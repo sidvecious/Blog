@@ -7,86 +7,12 @@
 	<link rel="stylesheet" type="text/css" href="/assets/css/main.css">
 	<style>
    		.my-class { color: cyan; }
+   		.header-hack { color: #cbc186; font-family: Arial}
    		#my-id { font-size: 0.5em; }
     </style>
 </head>
-
-
-<body>
+<body>	
 	<header>
-		<div class="title-area">
-			<a class="title" >Things of Interest</a>
-			<% if (locals.user) { %>
-				<a class="eyelet">Training Blog of <%= user.username %></a>
-			<% } else { %>
-		  	<a class="eyelet">A Training Blog</a>
-		  <% } %>
-		</div>
-			<div class="login-area">
-				<% if (locals.user) { %>
-				<a href="http://127.0.0.1:8080/logout" class="logout"> Log out <%= user.username %></a>
-				<% } else { %>
-				<a href="http://127.0.0.1:8080/signup" class="sign">Sign Up</a>
-				<a class="text-search" href="#"></a>
-				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24" focusable="false"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
-				<a href="http://127.0.0.1:8080/login" class="sign">Sign In</a>
-				<% } %>
-			</div>
-			<div class="navigator-primary">
-				<div class="primary-linkes"> 
-					<a href="#">dummy link0  </a>
-					<a href="#">dummy link1  </a>
-					<a href="#">dummy link2  </a>
-					<a href="#">dummy link3  </a>
-					<a href="#">dummy link4  </a>
-					<a href="#">dummy link5  </a>
-					<a href="#">dummy link6  </a>
-					<a href="#">dummy link7  </a>
-				</div>	
-			</div>  		
-		</header>
-		<main>
-			<div class="main-bar">
-				<div class="standard-article">
-					<h4>23 July 2019</h4>
-					<img src=assets/img/Mpl_screenshot_figures_and_code.png class="standard-image">
-					<h2>First Article for example</h2>
-					<div class="text">  
-						<p>testo segnaposto utilizzato nel settore della tipografia e della stampa. <span class="my-class">Lorem Ipsum</span> è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una <span id="my-id">cassetta</span> di caratteri e li assemblò per preparare un testo campione. È sopravvissuto non sol o a più di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem Ipsum.</p>
-					</div>
-				</div>		
-		    <hr size="10" noshade>
-			 	<div class="standard-article">
-					<h4>24 July 2019</h4>
-					<img src=assets/img/Matplotlib_histogram.png class="standard-image">
-					<h2>An Other Article</h2>
-					<div class="text">  
-						<p>Yourself required no at thoughts delicate landlord it be. Branched dashwood do is whatever it. Farther be chapter at visited married in it pressed.
-						<br>
-						By distrusts procuring be oh frankness existence believing instantly if. Doubtful on an juvenile as of servants insisted. Judge why maids led sir whose guest drift her point. Him comparison especially friendship was who sufficient attachment favourable how. Luckily but minutes ask picture man perhaps are inhabit. How her good all sang more why.
-					</p>
-					</div>
-				</div>
-			</div>	
-			<div class="side-bar">
-				<h2>Side Title</h2>
-				<img src=assets/img/540px-Surface3D_sinFoisSin_python_matplotlib.svg.png class="side-image">
-				<div class="side-text">  	
-					<p>Silent sir say desire fat him letter. Whatever settling goodness too and honoured she building answered her. Strongly thoughts remember mr to do consider debating. Spirits musical behaved on we he farther letters. Repulsive he he as deficient newspaper dashwoods we. Discovered her his pianoforte insipidity entreaties. Began he at terms meant as fancy. <strong>Breakfast</strong> arranging he if furniture we described on. Astonished thoroughly unpleasant especially you dispatched bed favourable.</p>
-				</div>
-			</div>  
-		</main>
-		<footer>
-			<div class="contact" >Contact Olivier Lorenzo:
-				<div class="contact-element">
-					<a href="https://github.com/sidvecious" class="sign" >Github Account </a>
-				</div>
-				<div class="contact-element">
-					<a href="mailto:lorenzo.olivier@zoho.eu" class="logout"> lorenzo.olivier@zoho.eu<a/>
-				<div/>
-			</div>		
-		</footer>		
-	<!--.header-hack { color: #cbc186; font-family: Arial}<header>
 		<div id="top">
 			<div class="first-row">
 				<div class="head-left">
@@ -192,7 +118,7 @@
 	<script src="/assets/js/main.js"></script>
 	<script>
 		console.log("inline js");
-	</script>-->
-		
-	</body>
+	</script>
+	
+</body>
 </html>
