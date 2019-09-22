@@ -205,6 +205,14 @@ app.post('/signup', urlencodedParser, function(req, res){
 			age: context.auth.age
 		};
 		users.push(user);
+		
+		let options = { 
+			maxAge: 1000* 60 * 15, //set the life of cookies 15 minutes
+			httpOnly: true,
+			signed: true
+		};
+
+		res.cookie("current_user", user.id, options);
 		res.redirect('/');
 	});
 });
