@@ -127,6 +127,7 @@ footer {
 	border-radius: 8px;
 	background-color: white;
 	color: blue;
+	text-decoration: none;
 }
 
 .logout {	
@@ -138,6 +139,7 @@ footer {
 	border-color: blue;
 	background-color: white;
 	color: orange;
+	text-decoration: none;
 }
 
 .main-bar {
