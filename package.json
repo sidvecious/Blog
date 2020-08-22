@@ -12,12 +12,15 @@
   "dependencies": {
     "bcrypt": "^3.0.6",
     "body-parser": "^1.18.3",
+    "bufferutil": "^4.0.1",
     "cookie-parser": "^1.4.4",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-crypto": "1.0.5",
     "lodash": "^4.17.20",
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "utf-8-validate": "^5.0.2",
+    "ws": "^7.3.1"
   },
   "devDependencies": {
     "easy-livereload": "^1.4.2",
