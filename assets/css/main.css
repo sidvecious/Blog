@@ -13,15 +13,12 @@ html {
 
 a { 
   	color: white; 
-  	background-color: blue;
-  	border-color: blue;
 }
 
 
 
 header {
 	background-color: white;
-	/*width: 868px;*/
 	padding: 36px;
 	margin-left: auto;
   	margin-right: auto;
@@ -38,7 +35,6 @@ body {
 
 main {
 	background-color: white;
-	/*width: 868px;*/
 	padding: 36px;
 	margin-left: auto;
   	margin-right: auto;
@@ -59,12 +55,8 @@ h4 {
 }
 
 footer {
-	border: groove;
 	background-color: blue;
-	border-color: blue;
 	height: auto;
-	/*width: 868px;*/
-	padding: 0px 36px 50px 36px;
 	margin-left: auto;
   	margin-right: auto;
   	line-height:60px;
@@ -81,11 +73,12 @@ footer {
 }
 
 .eyelet {
-	padding-left: 40px ;
+	padding-left: 150px ;
 	background-color: white;
 	color: orange;
 	font-weight: 900;
 	font-size: 20px;
+	display:flex;
 
 }
 
@@ -111,11 +104,13 @@ footer {
 	display: grid;
     grid-template-columns: repeat(8, 1fr);
     margin: 0px 0px 0px 30px;
-	border: groove;
+	/*border: groove;*/
 	border-radius: 8px;
 	padding: 3px 5px 3px 5px;
-	background-color: blue;
-	border-color: blue;
+	/*background-color: blue;*/
+	/*border-color: blue;*/
+	background: linear-gradient(white, blue 80%);
+
 }
 
 .primary-linkes a {
@@ -130,6 +125,10 @@ footer {
 	text-align: center;
 	border-radius: 8px;
 }
+
+.primary-linkes a:active {
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 2, 0.75);
+} 
 
 .text-search {
 }
@@ -150,6 +149,11 @@ footer {
 	border-radius: 8px;
 }
 
+.sign:active {
+	box-shadow: 0px 0px 15px 0px rgba(0, 0, 2, 0.75);
+
+}
+
 .logout {	
 	font-family:  Verdena;
 	font-weight: 700px;
@@ -167,6 +171,10 @@ footer {
 	background-color: rgba(0,0,255,.6);	
 	border-radius: 8px;
 }	
+
+.logout:active {
+	box-shadow: 0px 0px 15px 0px rgba(0, 0, 2, 0.75);	
+}
 
 .main-bar {
  grid-column: 1 / 3;
@@ -205,9 +213,15 @@ width: 300px;
 }
 
 .contact {
-	color: white;
-	font-weight: 100px;
-	font-size: 22px;
+	/*z-index: 12;*/
+	padding: 0px 36px 0px 36px;
+	background: linear-gradient(white 16%, blue);
+}
+
+.contact h2 {
+	margin: 0;
+	color:orange;
+	line-height: 14px;
 }
 
 .contact-element {
@@ -215,10 +229,95 @@ width: 300px;
 	height: 40px;
 }
 
+
 .wrapper {
 	width: 868px;
 	margin: auto;
 	box-shadow: 0px 0px 8px 0px rgba(0, 0, 2, 0.75);
+	margin-top: 13px;
+	margin-bottom:26px;
+}
+
+.copyright {
+	text-align: right;
+	font-size: 16px;
+}
+
+.copyright a {
+	background: transparent;
 }
 
 
+.toolpip {
+	display: inline-block;
+	position: relative;
+	margin-top: 20px;
+	width:30px;
+	height: 30px;
+	/*background-color: white;*/
+}
+
+.button {
+	margin-bottom: 6px;
+	width: 30px;
+	
+}
+
+span {
+	z-index: 1;
+	position: absolute;
+	visibility:hidden;
+	left: 40px;
+	color: black;
+	line-height: 20px;
+}
+.toolpip:hover span{
+	visibility:visible;
+}
+
+.button:hover {
+	background-color: orange;
+	border-radius: 15px;
+}
+
+.button:active {
+	margin-top: 1px;
+	box-shadow: 0px 0px 1px 0px rgba(0, 0, 2, 0.75);
+} 
+
+.minititle {
+	margin-left: 130px;
+	text-transform: uppercase;
+	font-weight: 900;
+	color: blue;
+	background-color: white;
+	letter-spacing: -5px;
+	font: 30px monospace;
+}
+
+
+.wrapform {
+	width: 868px;
+	display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding-bottom: 61px;
+
+}
+.form-sign-in {
+	color: blue;
+	grid-column: 2 / 4;
+}
+
+
+.form-sign-in div {
+	padding-top: 10px;
+}
+
+.form-sign-in button {
+	color: blue;
+}
+
+
+.error {
+	grid-column: 4 / 5;
+}

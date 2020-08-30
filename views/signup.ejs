@@ -1,26 +1,65 @@
-<form action="/signup" method="POST" class=form-sign-up>
-	<label for="username">Username:</label>
-	<br>
-	<input id="username" name="username" 
-		type="text" required minlength="3" maxlength="15"
-		value="<%= locals.auth ? auth.username : '' %>">
-	<br>
-	<label for="pw">Password:</label>
-	<br>
-	<input id="pw" name="password" type="password" 
-		required minlength="7" maxlength="15"
-		value="<%= locals.auth ? auth.password : '' %>"
-		>
-	<br>
-	<label for="age">Age:</label>
-	<br>
-	<input id="age" name="age" type="number"
-		required minlength="2" maxlength="3"
-		value="<%= locals.auth ? auth.age : '' %>">
-	<br>
-	<input type="submit" value="Submit">
-</form>
+<!DOCTYPE html>
+<html>
+<head>	
+	<title>Signup</title>
+	<link rel="stylesheet" type="text/css" href="/assets/css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+</head>
 
-<% if (locals.error) { %>
-<p style="color:red"><%= error %></p>
-<% } %>
+<body> 
+	<div class="wrapper">
+		<header>
+	<div class="title-area">
+		<a class="minititle">Things of Interest</a>
+		<a class="eyelet">Login Form</a>
+	</div>
+		</header>
+		<main>
+			<div class="wrapform">
+				<form action="/signup" method="POST" class=form-sign-in>
+					<div>
+						<label for="username">Username:</label>
+						<br>
+						<input id="username" name="username" 
+							type="text" required minlength="3" maxlength="15"
+							value="<%= locals.auth ? auth.username : '' %>">
+						<br>
+					</div>
+					<div>	
+						<label for="pw">Password:</label>
+						<br>
+						<input id="pw" name="password" type="password" 
+							required minlength="7" maxlength="15"
+							value="<%= locals.auth ? auth.password : '' %>"
+							>
+						<br>
+					</div>	
+					<div>
+						<label for="age">Age:</label>
+						<br>
+						<input id="age" name="age" type="number"
+							required minlength="2" maxlength="3"
+							value="<%= locals.auth ? auth.age : '' %>">
+						<br>
+					</div>
+					<div>	
+						<button type="submit">Submit</button>
+					</div>	
+				</form>
+				<div class="error">
+							<% if (locals.error) { %>
+			<p style="color:orange"><%= error %></p>
+			<% } %>
+				</div>
+			</div>		
+		</main>
+		<footer>
+			<div class="contact">		
+				<div class="copyright">
+					<a>  © 2020 Olivier Lorenzo </a>
+				</div>
+			</div>		
+		</footer>
+	</div>				
+</body>
+</html>
